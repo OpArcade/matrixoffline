@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 import {StudentData} from '@/models/StudentRegistration'
+import { sendEmail } from "@/lib/Email Service/email_service";
 
 
 mongoose.connect(process.env.MONGODB_URL!)
@@ -19,6 +20,10 @@ export async function POST(req:NextRequest){
             paymentMode:data.paymentMode,
             registrationType:data.registrationType,
             amount:data.amount,
+        })
+        sendEmail({
+            email:data.email,
+            name:data.name,
         })
         return NextResponse.json({success:true})
     }catch(error){
