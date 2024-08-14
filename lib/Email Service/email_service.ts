@@ -23,7 +23,7 @@ export const sendEmail = async({email,name}:{email:string,name:string})=>{
     const transporter = await getTransporter();
 
     const getHtmlMailGenrator = generateHtml(name)
-    const subject = "Your Registration Conformation"
+    const subject = "Ticket confirmation for MATRIX 2.0"
     
     let response;
 
