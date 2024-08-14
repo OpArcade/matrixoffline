@@ -5,7 +5,7 @@ const getTransporter = async() =>{
     let transporter = nodemailer.createTransport({
         host : process.env.EMAIL_SMTP_HOST!,
         port : parseInt(process.env.EMAIL_SMTP_PORT!),
-        secure : true,
+        //secure : true,
         // secure: false,
         auth : {
             user : process.env.EMAIL_SMTP_USER,
