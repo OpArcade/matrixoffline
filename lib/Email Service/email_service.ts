@@ -1,4 +1,4 @@
-import { generateHtml } from '@/utils/genrateHtml';
+import { generateHtml } from './genrateHtml';
 import nodemailer from 'nodemailer'
 
 const getTransporter = async() =>{
