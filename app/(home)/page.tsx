@@ -172,7 +172,7 @@ export default function Home() {
         <input required type="number" name="amount" id="amount"
           onChange={(e)=>handleChange('totalAmount',parseInt(e.target.value))}
         className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Total Amount Plaid"/>
-      <button className='bg-green-600 px-5 py-2' onClick={handleSubmit}> Submit </button>
+      <button className='bg-green-600 px-5 py-2 rounded-md' onClick={handleSubmit}> Submit </button>
       </form>
     </main>
   );
