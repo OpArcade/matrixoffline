@@ -67,12 +67,11 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-10 md:p-24 overflow-x-hidden">
-      <video src="/3.mov" autoPlay={true} loop muted className="absolute z-[-1] top-0 w-full h-[1600px] object-cover"/>
       <form action="" className=" flex flex-col gap-4 md:w-1/3 form">
         <label htmlFor="name" className="text-white "> Name </label>
         <input required onChange={(e)=>handleChange('name',e.target.value)} type="text" name="name" id="name" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Name"/>
-        <label htmlFor="collage" className="text-white "> Collage </label>
-        <input required onChange={(e)=>handleChange('collage',e.target.value)} type="text" name="collage" id="collage" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Collage Name"/>
+        <label htmlFor="collage" className="text-white "> College </label>
+        <input required onChange={(e)=>handleChange('collage',e.target.value)} type="text" name="collage" id="collage" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="College Name"/>
         <label htmlFor="course" className="text-white "> Course </label>
         <input required onChange={(e)=>handleChange('course',e.target.value)} type="text" name="course" id="course" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Course"/>
         <label htmlFor="year" className="text-white "> Year </label>
@@ -154,7 +153,7 @@ export default function Home() {
               <input required onChange={(e)=> handleChange('paymentMode',e.target.value)} type="radio" name="paymentMode" id="online" />
             </div>
             <div className="flex justify-between">
-              <label htmlFor="offline">OffLine</label>
+              <label htmlFor="offline">Offline</label>
               <input required onChange={(e)=>handleChange('paymentMode',e.target.value)} type="radio" name="paymentMode" id="offline" />
             </div>
           </div>
@@ -165,7 +164,7 @@ export default function Home() {
               <input required onChange={(e)=>handleChange('registrationMode',e.target.value)} type="radio" name="registrationMode" id="ronline" />
             </div>
             <div className="flex justify-between">
-              <label htmlFor="roffline">OffLine</label>
+              <label htmlFor="roffline">Offline</label>
               <input required onChange={(e)=>handleChange('registrationMode',e.target.value)} type="radio" name="registrationMode" id="roffline" />
             </div>
           </div>
