@@ -68,19 +68,19 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-10 md:p-24 overflow-x-hidden">
       <form action="" className=" flex flex-col gap-4 md:w-1/3 form">
-        <label htmlFor="name" className="text-white "> Name </label>
+        <label htmlFor="name" className="text-white text-xl semi-bold"> Name </label>
         <input required onChange={(e)=>handleChange('name',e.target.value)} type="text" name="name" id="name" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Name"/>
-        <label htmlFor="collage" className="text-white "> College </label>
+        <label htmlFor="collage" className="text-white text-xl semi-bold "> College </label>
         <input required onChange={(e)=>handleChange('collage',e.target.value)} type="text" name="collage" id="collage" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="College Name"/>
-        <label htmlFor="course" className="text-white "> Course </label>
+        <label htmlFor="course" className="text-white text-xl semi-bold"> Course </label>
         <input required onChange={(e)=>handleChange('course',e.target.value)} type="text" name="course" id="course" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Course"/>
-        <label htmlFor="year" className="text-white "> Year </label>
+        <label htmlFor="year" className="text-white text-xl semi-bold"> Year </label>
         <input required onChange={(e)=>{Number(e.target.value) <=4 ? handleChange('year',e.target.value) : toast.error("The Imputed Year is Invalid") }} type="number" name="year" id="year" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Year"/>
-        <label htmlFor="email" className="text-white "> Email </label>
+        <label htmlFor="email" className="text-white text-xl semi-bold"> Email </label>
         <input required onChange={(e)=>handleChange('email',e.target.value)} type="email" name="email" id="email" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Email"/>
-        <label htmlFor="phone" className="text-white "> Phone Number </label>
+        <label htmlFor="phone" className="text-white text-xl semi-bold"> Phone Number </label>
         <input required onChange={(e)=>handleChange('phoneNumber',e.target.value)} type="number" id="phone" name="phone" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400" placeholder="Phone Number"/>
-        <p className="text-white ">Events</p>
+        <p className="text-white text-xl semi-bold">Events</p>
           <div className="text-white flex flex-col gap-3 my-4">
             <div className="flex justify-between">
               <label htmlFor="liveProj">Live projects</label>
@@ -146,7 +146,7 @@ export default function Home() {
               }} type="checkbox" name="events" id="pitchers" />
             </div>
           </div>
-        <p className="text-white ">Mode Of Payment</p>
+        <p className="text-white text-xl semi-bold">Mode Of Payment</p>
           <div className="text-white flex flex-col gap-3 my-4">
             <div className="flex justify-between">
               <label htmlFor="online">Online</label>
@@ -157,7 +157,7 @@ export default function Home() {
               <input required onChange={(e)=>handleChange('paymentMode',e.target.value)} type="radio" name="paymentMode" id="offline" />
             </div>
           </div>
-        <p className="text-white ">Type of registration</p>
+        <p className="text-white text-xl semi-bold">Type of registration</p>
           <div className="text-white flex flex-col gap-3 my-4">
             <div className="flex justify-between">
               <label htmlFor="ronline">Online</label>
@@ -168,7 +168,7 @@ export default function Home() {
               <input required onChange={(e)=>handleChange('registrationMode',e.target.value)} type="radio" name="registrationMode" id="roffline" />
             </div>
           </div>
-        <label htmlFor="amount" className="text-white"> Amount </label>
+        <label htmlFor="amount" className="text-white text-xl semi-bold"> Amount </label>
         <input required type="number" name="amount" id="amount"
           onChange={(e)=>handleChange('totalAmount',parseInt(e.target.value))}
         className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Total Amount Plaid"/>
