@@ -6,7 +6,7 @@ const getTransporter = async() =>{
         host : process.env.EMAIL_SMTP_HOST!,
         port : parseInt(process.env.EMAIL_SMTP_PORT!),
         //secure : true,
-        // secure: false,
+        secure: false,
         auth : {
             user : process.env.EMAIL_SMTP_USER,
             pass : process.env.EMAIL_SMTP_PASSWORD,
