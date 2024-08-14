@@ -57,6 +57,7 @@ export default function Home() {
     try{
       await axios.post("/api/register",onSubmit).then((response)=>{
         toast.success('🥳 Registration Done Successfully..!')
+setUserData({})
       })
     }catch(error){
       toast.error("😰 There is an error while uploading the data")
