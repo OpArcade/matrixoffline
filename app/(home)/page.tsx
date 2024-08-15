@@ -28,7 +28,7 @@ export default function Home() {
     else{
       setUserData({
                     ...studentData,
-                    event : [...studentData.event,'ui_ux'],
+                    event : [...studentData.event, contentName ],
                   });
                 }} 
     }
