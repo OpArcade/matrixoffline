@@ -64,21 +64,21 @@ export default function Home() {
         toast.success('🥳 Registration Done Successfully..!')
       setLoading(false)
       })
-      setUserData({
-        name:'',
-        collage:'',
-        course:'',
-        year: undefined,
-        email:'',
-        phoneNumber:undefined,
-        event:[],
-        paymentMode:'',
-        registrationMode:'',
-        totalAmount:undefined,
-      })
     }catch(error){
       toast.error("😰 There is an error while uploading the data")
     }
+    setUserData({
+      name:'',
+      collage:'',
+      course:'',
+      year: undefined,
+      email:'',
+      phoneNumber:undefined,
+      event:[],
+      paymentMode:'',
+      registrationMode:'',
+      totalAmount:undefined,
+    })
   }
 
   return (

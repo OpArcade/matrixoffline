@@ -29,7 +29,7 @@ export const sendEmail = async({email,name}:{email:string,name:string})=>{
 
     try{
         response = await transporter.sendMail({
-            from : process.env.EMAIL,
+            from : "internware@gmail.com",
             to : email,
             subject,
             html : getHtmlMailGenrator,
