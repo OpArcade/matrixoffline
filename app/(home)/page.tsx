@@ -22,8 +22,11 @@ export default function Home() {
   }
 
   const handleContent =(contentName:string)=>{
-    if(contentName === studentData.event.find(event=>event === contentName){
-      setUserData.event((prevItem)=>prevItem.filter(item=> item !== contentName))
+    if(contentName === studentData.event.find(event=>event === contentName)){
+      setUserData(prevState => ({
+        ...prevState,
+        event: prevState.event.filter(event => event !== contentName)
+      }));
     }
     else{
       setUserData({
@@ -31,9 +34,7 @@ export default function Home() {
                     event : [...studentData.event, contentName ],
                   });
                 }} 
-    }
-  }
-
+    
 
   const [studentData,setUserData] = useState<StudentProps>({
     name:'',
@@ -94,7 +95,7 @@ export default function Home() {
       totalAmount:undefined,
     })
   }
-
+console.log(studentData);
   return (
       <main className={ loading ? "my-[80%] md:my-[20%]" : "flex min-h-screen flex-col items-center justify-between p-10 md:p-24 overflow-x-hidden"}>
       {loading && <LoadingAnimation/>}
@@ -116,78 +117,64 @@ export default function Home() {
             <div className="flex justify-between">
               <label htmlFor="liveProj">Live projects</label>
               <input 
+              value={"live_projects"}
               checked={studentData.event.find(event=>event === 'live_projects')?true:false} 
               onChange={(e)=>{
-                setUserData({
-                  ...studentData,
-                  event : [...studentData.event,'live_projects'],
-                });
+                handleContent(e.target.value)
               }} type="checkbox" name="events" id="liveProj" />
             </div>
             <div className="flex justify-between">
               <label htmlFor="gamingTournament">Gaming Tournament</label>
               <input  
+              value={"gamingTournament"}
               checked={studentData.event.find(event=>event === 'gamingTournament')?true:false} 
               onChange={(e)=>{
-                setUserData({
-                  ...studentData,
-                  event : [...studentData.event,'gamingTournament'],
-                });
+                handleContent(e.target.value)
               }} type="checkbox" name="events" id="gamingTournament" />
             </div>
             <div className="flex justify-between">
               <label htmlFor="insideEdge">Inside Edge</label>
               <input  
+              value={"inside_edge"}
               checked={studentData.event.find(event=>event === 'inside_edge')?true:false} 
               onChange={(e)=>{
-                setUserData({
-                  ...studentData,
-                  event : [...studentData.event,'inside_edge'],
-                });
+                handleContent(e.target.value)
               }} type="checkbox" name="events" id="insideEdge" />
             </div>
             <div className="flex justify-between">
               <label htmlFor="ui/ux">UI/UX Design</label>
               <input  
+              value={'ui_ux'}
                 checked={studentData.event.find(event=>event === 'ui_ux')?true:false} 
                 onChange={(e)=>{
-                  setUserData({
-                    ...studentData,
-                    event : [...studentData.event,'ui_ux'],
-                  });
+                  handleContent(e.target.value)
                 }} type="checkbox" name="" id="ui/ux" />
             </div>
             <div className="flex justify-between">
               <label htmlFor="newsSurge">News Surge</label>
               <input  
+              value={"news_surge"}
               checked={studentData.event.find(event=>event === 'news_surge')?true:false} 
               onChange={(e)=>{
-                setUserData({
-                  ...studentData,
-                  event : [...studentData.event,'news_surge'],
-                });
+                handleContent(e.target.value)
               }} type="checkbox" name="events" id="newsSurge" />
             </div>
             <div className="flex justify-between">
               <label htmlFor="dataScience">Data Science</label>
               <input  
+              value={'data_science'}
               checked={studentData.event.find(event=>event === 'data_science')?true:false} 
               onChange={(e)=>{
-                setUserData({
-                  ...studentData,
-                  event : [...studentData.event,'data_science'],
-                });
+                handleContent(e.target.value)
               }} type="checkbox" name="events" id="dataScience" />
             </div>
             <div className="flex justify-between">
               <label htmlFor="pitchers">Pitchers</label>
               <input  
+              value={'pitchers'}
               checked={studentData.event.find(event=>event === 'pitchers')?true:false} 
               onChange={(e)=>{
-                setUserData({
-                  ...studentData,
-                  event : [...studentData.event,'pitchers'],
-                });
+                handleContent(e.target.value)
               }} type="checkbox" name="events" id="pitchers" />
             </div>
           </div>
@@ -217,7 +204,7 @@ export default function Home() {
         <input required type="number" name="amount" id="amount"
           onChange={(e)=>handleChange('totalAmount',parseInt(e.target.value))}
         className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " 
-        placeholder="Total Amount Plaid"/>
+        placeholder="Total Amount Paid"/>
       <button className='bg-green-600 px-5 py-2 rounded-md focus:bg-green-700' onClick={handleSubmit}> Submit </button>
       </form>}
     </main>
