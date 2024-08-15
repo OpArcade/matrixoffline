@@ -135,7 +135,7 @@ export default function Home() {
             <div className="flex justify-between">
               <label htmlFor="ui/ux">UI/UX Design</label>
               <input  
-                checked={studentData.event.find(event=>event === 'ui_ux ')?true:false} 
+                checked={studentData.event.find(event=>event === 'ui_ux')?true:false} 
                 onChange={(e)=>{
                   setUserData({
                     ...studentData,
