@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import './home.css'
 import { useState } from "react";
 import axios from 'axios';
+import LoadingAnimation from '@/components/Loader/LoadingAnimation';
 
 export default function Home() {
 
@@ -20,18 +21,34 @@ export default function Home() {
     totalAmount:number | undefined,
   }
 
+  const handleContent =(contentName:string)=>{
+    if(contentName === studentData.event.find(event=>event === contentName){
+      setUserData.event((prevItem)=>prevItem.filter(item=> item !== contentName))
+    }
+    else{
+      setUserData({
+                    ...studentData,
+                    event : [...studentData.event, contentName ],
+                  });
+                }} 
+    }
+  }
+
+
   const [studentData,setUserData] = useState<StudentProps>({
     name:'',
     collage:'',
     course:'',
-    year:0,
+    year: undefined,
     email:'',
-    phoneNumber:0,
+    phoneNumber:undefined,
     event:[],
     paymentMode:'',
     registrationMode:'',
-    totalAmount:0,
+    totalAmount:undefined,
   })
+
+  const [loading,setLoading] = useState<boolean>(false)
 
   const handleChange = (key:string,value:string | string[] | number)=>{    
     setUserData({
@@ -42,6 +59,7 @@ export default function Home() {
 
   const handleSubmit =async(e:any)=>{
     e.preventDefault()
+    
     const onSubmit = {
       name : studentData.name,
       collage : studentData.collage,
@@ -55,37 +73,51 @@ export default function Home() {
       amount : studentData.totalAmount,
     }
     try{
+      setLoading(true)
       await axios.post("/api/register",onSubmit).then((response)=>{
         toast.success('🥳 Registration Done Successfully..!')
+      setLoading(false)
       })
     }catch(error){
       toast.error("😰 There is an error while uploading the data")
     }
+    setUserData({
+      name:'',
+      collage:'',
+      course:'',
+      year: undefined,
+      email:'',
+      phoneNumber:undefined,
+      event:[],
+      paymentMode:'',
+      registrationMode:'',
+      totalAmount:undefined,
+    })
   }
 
-  console.log(studentData)
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-10 md:p-24 overflow-x-hidden">
-      <video src="/3.mov" autoPlay={true} loop muted className="absolute z-[-1] top-0 w-full h-[1600px] object-cover"/>
-      <form action="" className=" flex flex-col gap-4 md:w-1/3 form">
-        <label htmlFor="name" className="text-white "> Name </label>
-        <input required onChange={(e)=>handleChange('name',e.target.value)} type="text" name="name" id="name" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Name"/>
-        <label htmlFor="collage" className="text-white "> Collage </label>
-        <input required onChange={(e)=>handleChange('collage',e.target.value)} type="text" name="collage" id="collage" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Collage Name"/>
-        <label htmlFor="course" className="text-white "> Course </label>
-        <input required onChange={(e)=>handleChange('course',e.target.value)} type="text" name="course" id="course" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Course"/>
-        <label htmlFor="year" className="text-white "> Year </label>
-        <input required onChange={(e)=>{Number(e.target.value) <=4 ? handleChange('year',e.target.value) : toast.error("The Imputed Year is Invalid") }} type="number" name="year" id="year" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Year"/>
-        <label htmlFor="email" className="text-white "> Email </label>
-        <input required onChange={(e)=>handleChange('email',e.target.value)} type="email" name="email" id="email" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Email"/>
-        <label htmlFor="phone" className="text-white "> Phone Number </label>
-        <input required onChange={(e)=>handleChange('phoneNumber',e.target.value)} type="number" id="phone" name="phone" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400" placeholder="Phone Number"/>
-        <p className="text-white ">Events</p>
+      <main className={ loading ? "my-[80%] md:my-[20%]" : "flex min-h-screen flex-col items-center justify-between p-10 md:p-24 overflow-x-hidden"}>
+      {loading && <LoadingAnimation/>}
+      { loading === false && <form action="" className=" flex flex-col gap-4 md:w-1/3 form">
+        <label htmlFor="name" className="text-white text-xl semi-bold"> Name </label>
+        <input required value={studentData.name} onChange={(e)=>handleChange('name',e.target.value)} type="text" name="name" id="name" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Name"/>
+        <label htmlFor="collage" className="text-white text-xl semi-bold "> College </label>
+        <input required value={studentData.collage} onChange={(e)=>handleChange('collage',e.target.value)} type="text" name="collage" id="collage" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="College Name"/>
+        <label htmlFor="course" className="text-white text-xl semi-bold"> Course </label>
+        <input required value={studentData.course} onChange={(e)=>handleChange('course',e.target.value)} type="text" name="course" id="course" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Course"/>
+        <label htmlFor="year" className="text-white text-xl semi-bold"> Year </label>
+        <input required value={studentData.year} onChange={(e)=>{Number(e.target.value) <=4 ? handleChange('year',e.target.value) : toast.error("The Imputed Year is Invalid") }} type="number" name="year" id="year" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Year"/>
+        <label htmlFor="email" className="text-white text-xl semi-bold"> Email </label>
+        <input required value={studentData.email} onChange={(e)=>handleChange('email',e.target.value)} type="email" name="email" id="email" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Email"/>
+        <label htmlFor="phone" className="text-white text-xl semi-bold"> Phone Number </label>
+        <input required value={studentData.phoneNumber} onChange={(e)=>handleChange('phoneNumber',e.target.value)} type="number" id="phone" name="phone" className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400" placeholder="Phone Number"/>
+        <p className="text-white text-xl semi-bold">Events</p>
           <div className="text-white flex flex-col gap-3 my-4">
             <div className="flex justify-between">
               <label htmlFor="liveProj">Live projects</label>
-              <input onChange={(e)=>{
+              <input 
+              checked={studentData.event.find(event=>event === 'live_projects')?true:false} 
+              onChange={(e)=>{
                 setUserData({
                   ...studentData,
                   event : [...studentData.event,'live_projects'],
@@ -94,7 +126,9 @@ export default function Home() {
             </div>
             <div className="flex justify-between">
               <label htmlFor="gamingTournament">Gaming Tournament</label>
-              <input  onChange={(e)=>{
+              <input  
+              checked={studentData.event.find(event=>event === 'gamingTournament')?true:false} 
+              onChange={(e)=>{
                 setUserData({
                   ...studentData,
                   event : [...studentData.event,'gamingTournament'],
@@ -103,7 +137,9 @@ export default function Home() {
             </div>
             <div className="flex justify-between">
               <label htmlFor="insideEdge">Inside Edge</label>
-              <input  onChange={(e)=>{
+              <input  
+              checked={studentData.event.find(event=>event === 'inside_edge')?true:false} 
+              onChange={(e)=>{
                 setUserData({
                   ...studentData,
                   event : [...studentData.event,'inside_edge'],
@@ -112,16 +148,20 @@ export default function Home() {
             </div>
             <div className="flex justify-between">
               <label htmlFor="ui/ux">UI/UX Design</label>
-              <input  onChange={(e)=>{
-                setUserData({
-                  ...studentData,
-                  event : [...studentData.event,'ui_ux'],
-                });
-              }} type="checkbox" name="" id="ui/ux" />
+              <input  
+                checked={studentData.event.find(event=>event === 'ui_ux')?true:false} 
+                onChange={(e)=>{
+                  setUserData({
+                    ...studentData,
+                    event : [...studentData.event,'ui_ux'],
+                  });
+                }} type="checkbox" name="" id="ui/ux" />
             </div>
             <div className="flex justify-between">
               <label htmlFor="newsSurge">News Surge</label>
-              <input  onChange={(e)=>{
+              <input  
+              checked={studentData.event.find(event=>event === 'news_surge')?true:false} 
+              onChange={(e)=>{
                 setUserData({
                   ...studentData,
                   event : [...studentData.event,'news_surge'],
@@ -130,7 +170,9 @@ export default function Home() {
             </div>
             <div className="flex justify-between">
               <label htmlFor="dataScience">Data Science</label>
-              <input  onChange={(e)=>{
+              <input  
+              checked={studentData.event.find(event=>event === 'data_science')?true:false} 
+              onChange={(e)=>{
                 setUserData({
                   ...studentData,
                   event : [...studentData.event,'data_science'],
@@ -139,7 +181,9 @@ export default function Home() {
             </div>
             <div className="flex justify-between">
               <label htmlFor="pitchers">Pitchers</label>
-              <input  onChange={(e)=>{
+              <input  
+              checked={studentData.event.find(event=>event === 'pitchers')?true:false} 
+              onChange={(e)=>{
                 setUserData({
                   ...studentData,
                   event : [...studentData.event,'pitchers'],
@@ -147,34 +191,35 @@ export default function Home() {
               }} type="checkbox" name="events" id="pitchers" />
             </div>
           </div>
-        <p className="text-white ">Mode Of Payment</p>
+        <p className="text-white text-xl semi-bold">Mode Of Payment</p>
           <div className="text-white flex flex-col gap-3 my-4">
             <div className="flex justify-between">
               <label htmlFor="online">Online</label>
-              <input required onChange={(e)=> handleChange('paymentMode',e.target.value)} type="radio" name="paymentMode" id="online" />
+              <input required checked={studentData.paymentMode === "Online" ? true:false } onChange={(e)=> handleChange('paymentMode',e.target.value)} type="radio" value={"Online"} name="paymentMode" id="online" />
             </div>
             <div className="flex justify-between">
-              <label htmlFor="offline">OffLine</label>
-              <input required onChange={(e)=>handleChange('paymentMode',e.target.value)} type="radio" name="paymentMode" id="offline" />
+              <label htmlFor="offline">Offline</label>
+              <input required checked={studentData.paymentMode === "Offline" ? true:false } onChange={(e)=>handleChange('paymentMode',e.target.value)} type="radio" value={"Offline"} name="paymentMode" id="offline" />
             </div>
           </div>
-        <p className="text-white ">Type of registration</p>
+        <p className="text-white text-xl semi-bold">Type of registration</p>
           <div className="text-white flex flex-col gap-3 my-4">
             <div className="flex justify-between">
               <label htmlFor="ronline">Online</label>
-              <input required onChange={(e)=>handleChange('registrationMode',e.target.value)} type="radio" name="registrationMode" id="ronline" />
+              <input required  checked={studentData.registrationMode === "Online" ? true:false } onChange={(e)=>handleChange('registrationMode',e.target.value)} type="radio" value={"Online"} name="registrationMode" id="ronline" />
             </div>
             <div className="flex justify-between">
-              <label htmlFor="roffline">OffLine</label>
-              <input required onChange={(e)=>handleChange('registrationMode',e.target.value)} type="radio" name="registrationMode" id="roffline" />
+              <label htmlFor="roffline">Offline</label>
+              <input required checked={studentData.registrationMode === "Offline" ? true:false }  onChange={(e)=>handleChange('registrationMode',e.target.value)} type="radio" value={"Offline"} name="registrationMode" id="roffline" />
             </div>
           </div>
-        <label htmlFor="amount" className="text-white"> Amount </label>
+        <label htmlFor="amount" className="text-white text-xl semi-bold"> Amount </label>
         <input required type="number" name="amount" id="amount"
           onChange={(e)=>handleChange('totalAmount',parseInt(e.target.value))}
-        className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " placeholder="Total Amount Plaid"/>
-      <button onClick={handleSubmit}> Submit </button>
-      </form>
+        className="rounded-md px-3 py-2 backdrop-blur-3xl bg-transparent border-green-600 border-2 placeholder-slate-400 " 
+        placeholder="Total Amount Plaid"/>
+      <button className='bg-green-600 px-5 py-2 rounded-md focus:bg-green-700' onClick={handleSubmit}> Submit </button>
+      </form>}
     </main>
   );
 }

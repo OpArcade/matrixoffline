@@ -6,7 +6,7 @@ const getTransporter = async() =>{
         host : process.env.EMAIL_SMTP_HOST!,
         port : parseInt(process.env.EMAIL_SMTP_PORT!),
         // secure : true,
-        secureConnection: false,
+        secure: false,
         auth : {
             user : process.env.EMAIL_SMTP_USER,
             pass : process.env.EMAIL_SMTP_PASSWORD,
@@ -23,13 +23,13 @@ export const sendEmail = async({email,name}:{email:string,name:string})=>{
     const transporter = await getTransporter();
 
     const getHtmlMailGenrator = generateHtml(name)
-    const subject = "Your Registration Conformation"
+    const subject = "Ticket confirmation for MATRIX 2.0"
     
     let response;
 
     try{
         response = await transporter.sendMail({
-            from : process.env.EMAIL,
+            from : "internware@gmail.com",
             to : email,
             subject,
             html : getHtmlMailGenrator,
