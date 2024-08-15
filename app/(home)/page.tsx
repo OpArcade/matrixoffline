@@ -45,8 +45,7 @@ export default function Home() {
 
   const handleSubmit =async(e:any)=>{
     e.preventDefault()
-    setLoading(true)
-
+    
     const onSubmit = {
       name : studentData.name,
       collage : studentData.collage,
@@ -60,8 +59,10 @@ export default function Home() {
       amount : studentData.totalAmount,
     }
     try{
+      setLoading(true)
       await axios.post("/api/register",onSubmit).then((response)=>{
         toast.success('🥳 Registration Done Successfully..!')
+      setLoading(false)
       })
       setUserData({
         name:'',
@@ -78,7 +79,6 @@ export default function Home() {
     }catch(error){
       toast.error("😰 There is an error while uploading the data")
     }
-    setLoading(false)
   }
 
   return (
