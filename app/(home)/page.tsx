@@ -21,6 +21,20 @@ export default function Home() {
     totalAmount:number | undefined,
   }
 
+  const handleContent =(contentName:string)=>{
+    if(contentName === studentData.event.find(event=>event === contentName){
+      setUserData.event((prevItem)=>prevItem.filter(item=> item !== contentName))
+    }
+    else{
+      setUserData({
+                    ...studentData,
+                    event : [...studentData.event,'ui_ux'],
+                  });
+                }} 
+    }
+  }
+
+
   const [studentData,setUserData] = useState<StudentProps>({
     name:'',
     collage:'',
