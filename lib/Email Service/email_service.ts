@@ -5,15 +5,15 @@ const getTransporter = async() =>{
     let transporter = nodemailer.createTransport({
         host : process.env.EMAIL_SMTP_HOST!,
         port : parseInt(process.env.EMAIL_SMTP_PORT!),
-        secure : true,
-        // secure: false,
+        // secure : true,
+        secure: false,
         auth : {
             user : process.env.EMAIL_SMTP_USER,
             pass : process.env.EMAIL_SMTP_PASSWORD,
         },
-        // tls:{
-        //     ciphers:'SSLv3'
-        // }
+        tls:{
+            ciphers:'SSLv3'
+        }
     })
     return transporter;
 }
