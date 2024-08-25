@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NS LEARN
 
-## Getting Started
+S LEARN: A Comprehensive Game App for Enhancing Learning and Social Integration for Neurodiverse Children
 
-First, run the development server:
+Drive Link for the game:-
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   [Click to downlaod the Game](https://drive.google.com/file/d/1J6Irq8Ifz2c3iP_whsom8SNouFggDNiW/view?usp=sharing)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+HOW TO START:-
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Download the application form the drive link named NS LEARN. (Must have the strong internet connection)
+- After downlaod the application, start the application and click  on the start button.
+- Click on the room button (stark world).
+- Than click on blue connect button.
+- start moving the player towards the section and enjoy the learning.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Other Links
+- [Project File Link](https://drive.google.com/file/d/1VofO2A9cCtImbhJoJaz0usUISxHgPnH6/view?usp=sharing)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Game Over view
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- NS LEARN is an innovative game app that supports neurodiverse children by creating an engaging, inclusive, and supportive virtual learning environment. The app integrates educational gameplay with social interaction tools, including chat and chatbot features, and a digital library for academic support.
 
-## Deploy on Vercel
+## Objectives
+- To provide an engaging, educational experience tailored to neurodiverse children.
+- To facilitate social interaction through integrated chat and chatbot features.
+- To support academic learning with a digital library   for easy access to educational materials.
+- To offer a virtual world that reflects real-life interactions and supports friendly competition.
+ 
+## Benefits for Neurodiverse Children
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Enhanced Learning Experience
+- Improved Social Interaction
+- Emotional Regulation and Well-being
+- Academic Support
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Design and Features
+
+- Virtual World and Gameplay
+- Chat and Chatbot Features
+- Digital library  
+
+
+## Tech Stack Used
+
+- Unity 3D 
+- React js 
+- Python socket io
+- C#
+- Coherence 
+
+## Future Updates 
+- More learning and interative features will be added in future.
+- Integration with Professional Support
+- Creating a Virtual World
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+![App Screenshot](https://drive.google.com/file/d/18BE3B3k0x8Eb2_fNaQw7Ej-WtjLTZnnE/view?usp=sharing)
+
+
+
+    
+
+
